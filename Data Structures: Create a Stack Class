@@ -24,7 +24,7 @@ this.clear = function(val){
 }
 this.peek = function(val){
 
-  return collection[0]
+  return collection[length-1]
 }
 
   // Only change code above this line
