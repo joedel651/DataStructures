@@ -1,0 +1,10 @@
+var byteSize = 64; //Size of the buffer
+var buffer = new ArrayBuffer(byteSize); //define buffer
+var i32View = new Int32Array(buffer);  //define array
+
+
+/* Key take aways from this assignment
+It is signed and takes 32 bits.
+It has minimum -2147483648 and maximum +2147483647 value.
+
+ */
