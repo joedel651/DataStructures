@@ -1,0 +1,31 @@
+function Stack() {
+ // var Top = -1;    //an index starting before
+  var collection = [];
+  this.print = function() {
+    console.log(collection);
+  };
+  // Only change code below this line
+this.push = function(val){
+  return collection.push(val)
+}
+this.pop = function(){
+  return collection.pop()
+}
+this.isEmpty = function(val){
+ if( collection.length == 0){
+   return true
+
+  }
+
+  else{return false}
+}
+this.clear = function(val){
+  return collection.length = 0
+}
+this.peek = function(val){
+
+  return collection[0]
+}
+
+  // Only change code above this line
+}
