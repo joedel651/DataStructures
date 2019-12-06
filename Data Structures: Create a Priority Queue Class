@@ -28,3 +28,15 @@ function PriorityQueue () {
    return true
 
   }
+
+  else{return false}
+}
+
+}
+
+let array = [['human', 4], ['kitten', 7], ['dog', 3], ['rabbit', 8]];
+var values = array.map(function(keys) { return keys[1]; });
+var thePriority = Math.min.apply(null, values)
+console.log(thePriority)
+
+console.log(array.find(element => element[1] == thePriority))
