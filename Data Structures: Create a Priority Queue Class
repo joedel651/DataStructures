@@ -1,4 +1,9 @@
 class PriorityQueue {
+  //this is an unsorted PriorityQueue
+  //O(1) to insert elements
+  //O(n) to pop elements because it searches for the priority
+  //O(1) to see if it is empty because it just looks at the value of length
+  //create a constructor with default parameters
    constructor() {
     //initializing queue
     this.collection = [];
@@ -13,6 +18,7 @@ class PriorityQueue {
     return this.collection.push(element)
   }
 
+//this is a helper function to tell us what value is next to be popped
   findPriority(){
 
     var values = this.collection.map(function(keys) { return keys[1]; });
@@ -20,16 +26,18 @@ class PriorityQueue {
    return this.collection.find(element => element[1] == thePriority)
    
   }
+  
   dequeue(){
-
+//set the item to be removed to the first priority found
   let removeItem = this.findPriority()
+//get the position of where it was so it can be spliced off
   let removePosition = this.collection.indexOf(removeItem);
   this.collection.splice(removePosition,1)
-
+//return only the item exclued the level of priority
     return removeItem[0]
 
   }
- 
+ // get the size by just return the length O(1) time 
   size(){
     return this.collection.length
   }
@@ -40,6 +48,8 @@ class PriorityQueue {
   }
 
 }
+
+//tests below to verify the data structure is working
 var arrayed = new PriorityQueue();
 arrayed.enqueue(['human', 6])
 arrayed.enqueue(['kitten', 3])
@@ -50,19 +60,3 @@ let important = arrayed.findPriority();
 console.log(important);
 console.log(arrayed.dequeue());
 console.log(arrayed)
-
-
-/*
-function arrayRemove(arr) {
-  var values = array.map(function(keys) { return keys[1]; });
-  var thePriority = Math.min.apply(null, values)
-
-   return arr.filter(function(element){
-       return element[1] != thePriority;
-   });
-
-}
-
-var result = arrayRemove(array);
-//console.log(result)
-*/
