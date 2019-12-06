@@ -17,9 +17,7 @@ function PriorityQueue () {
     //shift is like pop but removes elements from the beginning of the array
     return collection.shift()
   }
-  this.front = function(){
-    return collection[0]
-  }
+ 
   this.size = function(){
     return collection.length
   }
@@ -40,3 +38,16 @@ var thePriority = Math.min.apply(null, values)
 console.log(thePriority)
 
 console.log(array.find(element => element[1] == thePriority))
+
+function arrayRemove(arr) {
+  var values = array.map(function(keys) { return keys[1]; });
+  var thePriority = Math.min.apply(null, values)
+
+   return arr.filter(function(element){
+       return element[1] != thePriority;
+   });
+
+}
+
+var result = arrayRemove(array);
+console.log(result)
