@@ -15,15 +15,17 @@ class PriorityQueue {
 
   findPriority(){
 
-    var values = array.map(function(keys) { return keys[1]; });
+    var values = this.collection.map(function(keys) { return keys[1]; });
     var thePriority = Math.min.apply(null, values)
-   return array.find(element => element[1] == thePriority)
-
+   return this.collection.find(element => element[1] == thePriority)
    
   }
   dequeue(){
-    //shift is like pop but removes elements from the beginning of the array
-    return this.collection.shift()
+
+  let removeItem = this.findPriority()
+    
+    return removeItem[0]
+
   }
  
   size(){
@@ -36,10 +38,18 @@ class PriorityQueue {
   }
 
 }
-var array = new PriorityQueue();
-array.enqueue(['human', 1])
+var arrayed = new PriorityQueue();
+arrayed.enqueue(['human', 1])
+arrayed.enqueue(['kitten', 3])
+arrayed.enqueue(['dog', 7])
+arrayed.enqueue(['cat', 2])
+console.log(arrayed)
+let important = arrayed.findPriority();
+console.log(important);
+console.log(arrayed.dequeue());
+console.log(arrayed)
 
- //array.test();
+
 /*
 function arrayRemove(arr) {
   var values = array.map(function(keys) { return keys[1]; });
