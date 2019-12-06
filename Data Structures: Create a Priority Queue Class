@@ -1,44 +1,46 @@
-function PriorityQueue () {
+class PriorityQueue {
+   constructor() {
+    //initializing queue
     this.collection = [];
-    this.printCollection = function() {
-      console.log(this.collection);
-    };
-    // Only change code below this line
-  this.enqueue = function(element){
-    
-    return collection.push(element)
   }
 
-  this.findPriority = function(){
-    var values = array.map(function(keys) { return keys[1]; });
-    return Math.min.apply(null, values)
+  printCollection() {
+    console.log(this.collection);
   }
-  this.dequeue = function(){
+    // Only change code below this line
+  enqueue(element){
+    
+    return this.collection.push(element)
+  }
+
+  findPriority(){
+
+    var values = array.map(function(keys) { return keys[1]; });
+    var thePriority = Math.min.apply(null, values)
+   return array.find(element => element[1] == thePriority)
+
+   
+  }
+  dequeue(){
     //shift is like pop but removes elements from the beginning of the array
-    return collection.shift()
+    return this.collection.shift()
   }
  
-  this.size = function(){
-    return collection.length
-  }
-  this.isEmpty = function(val){
- if( collection.length == 0){
-   return true
-
+  size(){
+    return this.collection.length
   }
 
-  else{return false}
-}
+  // returns if the queue is empty
+  isEmpty() {
+    return this.size() === 0;
+  }
 
 }
+var array = new PriorityQueue();
+array.enqueue(['human', 1])
 
-let array = [['human', 4], ['kitten', 7], ['dog', 3], ['rabbit', 8]];
-var values = array.map(function(keys) { return keys[1]; });
-var thePriority = Math.min.apply(null, values)
-console.log(thePriority)
-
-console.log(array.find(element => element[1] == thePriority))
-
+ //array.test();
+/*
 function arrayRemove(arr) {
   var values = array.map(function(keys) { return keys[1]; });
   var thePriority = Math.min.apply(null, values)
@@ -50,4 +52,5 @@ function arrayRemove(arr) {
 }
 
 var result = arrayRemove(array);
-console.log(result)
+//console.log(result)
+*/
