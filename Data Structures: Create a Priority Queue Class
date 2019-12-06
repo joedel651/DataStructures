@@ -23,7 +23,9 @@ class PriorityQueue {
   dequeue(){
 
   let removeItem = this.findPriority()
-    
+  let removePosition = this.collection.indexOf(removeItem);
+  this.collection.splice(removePosition,1)
+
     return removeItem[0]
 
   }
@@ -39,7 +41,7 @@ class PriorityQueue {
 
 }
 var arrayed = new PriorityQueue();
-arrayed.enqueue(['human', 1])
+arrayed.enqueue(['human', 6])
 arrayed.enqueue(['kitten', 3])
 arrayed.enqueue(['dog', 7])
 arrayed.enqueue(['cat', 2])
