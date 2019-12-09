@@ -1,0 +1,48 @@
+class CircularQueue {
+   constructor(size) {
+
+     this.queue = [];
+     this.read = 0;
+     this.write = 0;
+     this.max = size - 1;
+
+     while (size > 0) {
+        this.queue.push(null);
+        size--;
+     }
+   }
+
+   print() {
+     return this.queue;
+   }
+
+   enqueue(item) {
+    // Only change code below this line
+   if(this.read <= this.write ){
+    this.queue.splice(this.write,1,item)
+    this.write ++
+   }
+   else{ return null}
+    // Only change code above this line
+   }
+
+   dequeue() {
+    // Only change code below this line
+    if(this.read <= this.write ){
+    let temp = this.queue[read];
+    this.queue.splice(this.read,1,null)
+    this.read ++
+    return temp
+   }
+
+    // Only change code above this line
+   }
+}
+
+var array = new CircularQueue(5);
+array.enqueue("bacon");
+array.enqueue("bacon");
+array.enqueue("bacon");
+array.enqueue("bacon");
+
+console.log(array)
