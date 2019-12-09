@@ -20,7 +20,8 @@ class CircularQueue {
     // Only change code below this line
    if(this.read <= this.write ){
     this.queue.splice(this.write,1,item)
-    this.write ++
+    this.write ++ % (this.max-1)
+    return item
    }
    else{ return null}
     // Only change code above this line
@@ -29,11 +30,13 @@ class CircularQueue {
    dequeue() {
     // Only change code below this line
     if(this.read <= this.write ){
-    let temp = this.queue[read];
-    this.queue.splice(this.read,1,null)
-    this.read ++
-    return temp
+        //return this.queue[this.read]
+        this.queue.splice(this.read,1,null)
+        this.read ++ % (this.max -1) 
+        
    }
+
+   else{ return null}
 
     // Only change code above this line
    }
@@ -44,5 +47,11 @@ array.enqueue("bacon");
 array.enqueue("bacon");
 array.enqueue("bacon");
 array.enqueue("bacon");
+array.enqueue("bacon");
+array.dequeue();
+array.dequeue();
+
+
 
 console.log(array)
+
