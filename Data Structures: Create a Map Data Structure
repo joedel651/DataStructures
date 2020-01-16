@@ -5,8 +5,13 @@ let Map = function() {
 		return this.count;
 	};
 	this.add = function(key, value) {
+
+		if(key in this.collection === false){
+			this.count++;
+		}
+
 		this.collection[key] = value;
-		this.count++;
+		//this.count++;
 	};
 	this.has = function(key) {
 		return (key in this.collection);
@@ -32,3 +37,12 @@ let Map = function() {
 		this.count = 0;
 	};
 };
+
+const myMap = new Map();
+
+myMap.add('first_name', 'Kuincy'); // now count is `1`
+myMap.add('last_name', 'Larson'); // now count is `2`
+
+// Oh.. I forgot how to spell Quincy, let's fix this.
+myMap.add('first_name', 'Quincy'); 
+console.log(myMap)
