@@ -1,0 +1,41 @@
+function LinkedList() {
+  var length = 0;
+  var head = null;
+
+  var Node = function(element){
+    this.element = element;
+    this.next = null;
+  };
+
+  this.head = function(){
+    return head;
+  };
+
+  this.size = function(){
+    return length;
+  };
+
+ this.add = function(element){
+   //create a node of that element
+    var node = new Node(element);
+    //check the base case
+    //if the list is empty the head is null
+    if(head === null){
+      //set the head to the first list being added
+        head = node;
+    } else {
+      //create a variable current node that equals head
+        var currentNode = head;
+//while a currentNode.next exists keep iterating through
+//the list
+        while(currentNode.next){
+            currentNode  = currentNode.next;
+        }
+//once the end of the list is found reassign the next element
+//from null to the node being added
+        currentNode.next = node;
+    }
+//increase the length
+    length++;
+  }; 
+}
