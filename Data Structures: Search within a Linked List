@@ -1,0 +1,88 @@
+function LinkedList() {
+  var length = 0;
+  var head = null;
+
+  var Node = function(element){
+    this.element = element;
+    this.next = null;
+  };
+
+  this.size = function(){
+    return length;
+  };
+
+  this.head = function(){
+    return head;
+  };
+
+  this.add = function(element){
+    var node = new Node(element);
+    if(head === null){
+        head = node;
+    } else {
+        var currentNode = head;
+
+        while(currentNode.next){
+            currentNode  = currentNode.next;
+        }
+
+        currentNode.next = node;
+    }
+
+    length++;
+  };
+
+  this.remove = function (element) {
+    // Only change code below this line
+    //base case
+    //check to see if the head is the element to be removed
+    if (head.element === element) {
+      head = head.next;
+      return length--;
+    }
+    let previous = head;
+    while (previous) {
+      let current = previous.next;
+      if (current) { // makes sure we are not at end where current.next would be null
+      
+        if (current.element === element) {
+          previous.next = current.next;
+          return length--;
+        }
+      }
+      previous = current;
+    }
+    // Only change code above this line
+  };
+
+  this.elementAt = function(index) {
+    var currentNode = head;
+    var count = 0
+
+    while(index > count){
+      count++
+      currentNode = currentNode.next 
+    }
+
+  return currentNode.element
+  };
+
+
+
+
+
+  this.indexOf = function(element) {
+    var currentNode = head;
+    var index = -1;
+
+    while(currentNode){
+        index++;
+        if(currentNode.element === element){
+            return index;
+        }
+        currentNode = currentNode.next;
+    }
+
+    return -1;
+  };
+}
