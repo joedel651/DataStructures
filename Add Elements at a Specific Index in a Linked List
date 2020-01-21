@@ -1,0 +1,71 @@
+function LinkedList() {
+  var length = 0;
+  var head = null;
+
+  var Node = function(element) {
+    this.element = element;
+    this.next = null;
+  };
+
+  this.size = function() {
+    return length;
+  };
+
+  this.head = function() {
+    return head;
+  };
+
+  this.add = function(element) {
+    var node = new Node(element);
+    if (head === null) {
+      head = node;
+    } else {
+      var currentNode = head;
+
+      while (currentNode.next) {
+        currentNode = currentNode.next;
+      }
+
+      currentNode.next = node;
+    }
+    length++;
+  };
+
+  // Only change code below this line
+this.addAt = function(index,element){
+   var node = new Node(element);
+   var previousNode;
+   var currentNode = head;
+   var currentIndex = 0;
+
+//if the position we want is not inside the list 
+//return false
+   if(index < 0 || index >= length){
+     return false
+   }
+
+//if we are looking to add at the front of the linked list
+//then just make the head equal the node containing
+//the new element
+   if(index === 0){
+        node.next = currentNode;
+        head = node;
+    }
+
+   else{
+//iterate through the list
+     while(currentIndex < index){
+       previousNode = currentNode
+       currentNode = currentNode.next
+       currentIndex++
+     }
+//add the new node inbetween the current and previous
+     node.next = currentNode
+     previousNode.next = node 
+
+   }
+
+   length++
+}
+  // Only change code above this line
+}
