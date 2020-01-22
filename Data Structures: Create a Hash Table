@@ -1,0 +1,82 @@
+var called = 0;
+var hash = (string, max) => {
+  //keep track of how many times the hash function is called
+  called++
+  var hash = 0;
+  for (var i = 0; i < string.length; i++) {
+    //add the ascii char code to the variable hash
+    hash += string.charCodeAt(i);
+  }
+  //return hash mod(max) i.e. the remainder 
+  return hash % max;
+};
+var HashTable = function() {
+  this.collection = {};
+  // an array to store the values 
+    let storage = [];
+    //max size of the hash
+  const storageLimit = 14;
+  
+  this.print = function() {
+    console.log(storage)
+  }
+
+  this.add = function(key, value) {
+    //the storage limit is used as the max in the 
+    //hash function
+    var index = hash(key, storageLimit);
+    //if there is nothing in that index of the storage 
+    //array then put the key and value there 
+    if (storage[index] === undefined) {
+      storage[index] = [
+        [key, value]
+      ];
+    } 
+ //if it is defined then there is something in that bucket   
+    else {
+      //check to see if the key exists and if so update
+      //the new value
+      var inserted = false;
+      for (var i = 0; i < storage[index].length; i++) {
+        if (storage[index][i][0] === key) {
+          storage[index][i][1] = value;
+          inserted = true;
+        }
+      }
+      //if the key does not exist push the key, value to the index
+      if (inserted === false) {
+        storage[index].push([key, value]);
+      }
+    }
+  };
+
+  this.remove = function(key) {
+    var index = hash(key, storageLimit);
+    //if it is the first element in the hash delete it
+    if (storage[index].length === 1 && storage[index][0][0] === key) {
+      delete storage[index];
+    } else {
+      //iterate through to find the index that contains the key and delete it 
+      for (var i = 0; i < storage[index].length; i++) {
+        if (storage[index][i][0] === key) {
+          delete storage[index][i];
+        }
+      }
+    }
+  };
+
+//same thing except youre returning the key youre looking for
+  this.lookup = function(key) {
+    var index = hash(key, storageLimit);
+    if (storage[index] === undefined) {
+      return undefined;
+    } else {
+      for (var i = 0; i < storage[index].length; i++) {
+        if (storage[index][i][0] === key) {
+          return storage[index][i][1];
+        }
+      }
+    }
+  };
+  // change code above this line
+};
