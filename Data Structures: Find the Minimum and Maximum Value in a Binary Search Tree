@@ -1,0 +1,25 @@
+ this.findMin = function() {
+    // Empty tree.
+    if (!this.root) {
+      return null;
+    }
+    let currentNode = this.root;
+    while (currentNode.left) {
+      currentNode = currentNode.left;
+    }
+    return currentNode.value;
+  };
+  this.findMax = function() {
+    // Empty tree.
+    if (!this.root) {
+      return null;
+    }
+    let currentNode = this.root;
+    while (currentNode.right) {
+      currentNode = currentNode.right;
+    }
+    return currentNode.value;
+  };
+
+
+//This work because a BST is in order from the min to the max at the leaf nodes. 
